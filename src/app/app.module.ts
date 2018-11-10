@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -10,7 +11,8 @@ import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
-import { InicioSesionService } from './servicios/inicio-sesion.service'
+import { InicioSesionService } from './servicios/inicio-sesion.service';
+import { RouterAppModule }     from '../app/router-app/router-app.module'
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { InicioSesionService } from './servicios/inicio-sesion.service'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule // imports firebase/storage only needed for storage features
+    AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    RouterAppModule,
+    FormsModule
   ],
   providers: [InicioSesionService],
   bootstrap: [AppComponent]

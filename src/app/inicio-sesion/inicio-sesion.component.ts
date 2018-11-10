@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InicioSesionService } from '../servicios/inicio-sesion.service'
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -6,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio-sesion.component.css']
 })
 export class InicioSesionComponent implements OnInit {
+  email: string;
+  password: string;
 
-  constructor() { }
+  prueba(){
+    console.log(this.email)
+    console.log("hola")
+  }
+
+  constructor() { 
+    
+  }
 
   ngOnInit() {
   }
