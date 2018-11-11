@@ -7,19 +7,29 @@ import { InicioSesionService } from '../servicios/inicio-sesion.service'
   styleUrls: ['./inicio-sesion.component.css']
 })
 export class InicioSesionComponent implements OnInit {
-  email: string;
-  password: string;
+  public email: string;
+  public password: string;
 
   prueba(){
     console.log(this.email)
     console.log("hola")
   }
 
-  constructor() { 
+  constructor(public outService:  InicioSesionService ) { 
     
   }
 
   ngOnInit() {
+  }
+
+  nvousuario(){
+    this.outService.login(this.email, this.password)
+    .then((res)=>{
+      console.log("bien");
+      console.log(res);
+    }).catch((err)=>{
+      console.log(err);
+    })
   }
 
 }

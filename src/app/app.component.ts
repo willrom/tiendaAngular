@@ -13,16 +13,4 @@ export class AppComponent {
   constructor(private Inisesion: InicioSesionService){
 
   }
-  login() {
-    alert("ok")
-    this.Inisesion.login()
-      .then((data)=>{
-        console.log(data);
-        alert('exito');
-      })
-      .catch((error)=>{
-        console.log(error);
-        alert('error');
-      })
-  }
 }
