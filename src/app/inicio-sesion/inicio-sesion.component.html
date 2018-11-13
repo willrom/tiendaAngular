@@ -1,23 +1,22 @@
 <div class="total">
-<div class="row">
-    <div class="col s6 offset-s3">
-      <div class="card">
-        <div class="card-body">
-          <h1 class="titulo">Inicio Sesion</h1>
-          <form (submit)="nvousuario()">
-            <div class="form-group">
-              <label>Correo Electronico</label>
-              <input type="email" [(ngModel)]="email" name="email" id="email" placeholder="Ingrese Email">
+  <div class="selects-container">
+  <div class="row">
+      <form class="col s6 offset-s3" (ngSubmit)="nvousuario()" [formGroup]="miFormulario">
+        <div class="card-panel">
+        <h1 class="">Inicio de Sesion</h1>
+            <div class="input-field">
+              <input type="email"  class="form-control" [(ngModel)]="email" name="email" id="email" placeholder="Ingrese Email"  formControlName="nombre-email">
+              <label for="email">Correo Electronico</label>
             </div>
-            <div class="form-group">
+            <label *ngIf="!miFormulario.controls['nombre-email'].valid">El Correo no es valido</label>
+            <div class="input-field">
+              <input type="text" class="form-control" [(ngModel)]="password" name="password" placeholder="Ingrese Contraseña" formControlName="password-email">
               <label>Contraseña</label>
-              <input type="passwords" [(ngModel)]="password" name="password" placeholder="Ingrese Contraseña">
             </div>
-              <button class="waves-effect waves-light btn" type="submit" (click)="prueba()">Ingresar</button>
-              <span>{{email}}</span>
-          </form>
+            <button class="waves-effect waves-light btn" type="submit" [disabled]="!miFormulario.valid" (click)="prueba()">Ingresar</button>
+            <span>{{email}}</span>
         </div>
-      </div>
+      </form>
     </div>
-</div>
-</div>
+  </div>
+  </div>

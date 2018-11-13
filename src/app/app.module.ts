@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -26,7 +26,8 @@ import { RouterAppModule }     from '../app/router-app/router-app.module'
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     RouterAppModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [InicioSesionService],
   bootstrap: [AppComponent]
