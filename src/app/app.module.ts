@@ -12,12 +12,18 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { InicioSesionService } from './servicios/inicio-sesion.service';
-import { RouterAppModule }     from '../app/router-app/router-app.module'
+import { RouterAppModule }     from '../app/router-app/router-app.module';
+import { NavbarComponent } from './navbar/navbar.component';
+import { VprincipalComponent } from './vprincipal/vprincipal.component';
+import { VcomprasComponent } from './vcompras/vcompras.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicioSesionComponent
+    InicioSesionComponent,
+    NavbarComponent,
+    VprincipalComponent,
+    VcomprasComponent
   ],
   imports: [
     BrowserModule,

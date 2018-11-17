@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
-import { InicioSesionService } from '../servicios/inicio-sesion.service'
+import { InicioSesionService } from '../servicios/inicio-sesion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -11,13 +12,14 @@ export class InicioSesionComponent implements OnInit {
   miFormulario: FormGroup;
   public email: string;
   public password: string;
+  mostrar=false;
 
   prueba(){
     console.log(this.email)
     console.log("hola")
   }
 
-  constructor(public outService:  InicioSesionService ) { 
+  constructor(public outService:  InicioSesionService, public router: Router ) { 
     
   }
 
@@ -28,13 +30,16 @@ export class InicioSesionComponent implements OnInit {
     })
   }
 
-  nvousuario(){
+  login(){
     this.outService.login(this.email, this.password)
     .then((res)=>{
-      console.log("bien");
+      this.router.navigate (['/home']);
+      alert("muy bien");
       console.log(res);
     }).catch((err)=>{
       console.log(err);
+      alert("muy mal");
+      this.mostrar=true;
     })
   }
 

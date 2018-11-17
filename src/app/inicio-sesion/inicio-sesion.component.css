@@ -4,6 +4,7 @@
     height: 700px;
     background-image: url("/src/assets/login-fondo.jpg");
 }
-.titulo{
-    text-align: center;
+.card-title{
+    color: white;
+    font-size: 23px;
 }
