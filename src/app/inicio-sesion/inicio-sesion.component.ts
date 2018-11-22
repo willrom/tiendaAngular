@@ -34,11 +34,9 @@ export class InicioSesionComponent implements OnInit {
     this.outService.login(this.email, this.password)
     .then((res)=>{
       this.router.navigate (['/home']);
-      alert("muy bien");
       console.log(res);
     }).catch((err)=>{
       console.log(err);
-      alert("muy mal");
       this.mostrar=true;
     })
   }

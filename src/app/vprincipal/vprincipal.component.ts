@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InicioSesionService } from '../servicios/inicio-sesion.service'
+
 
 @Component({
   selector: 'app-vprincipal',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VprincipalComponent implements OnInit {
 
-  constructor() { }
+  public catalogo: any[];
+
+
+  constructor(private liscatalogo:InicioSesionService) {}
 
   ngOnInit() {
+    this.liscatalogo.getcatalogo()
+    .snapshotChanges()
+    .subscribe(item =>{
+      this.catalogo = [];
+      item.forEach(element => {
+        let x = element.payload.toJSON();
+        x["$key"]=element.key;
+        this.catalogo.push(x)
+      })
+    })
   }
 
 }

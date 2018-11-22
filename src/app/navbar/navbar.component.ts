@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InicioSesionService } from '../servicios/inicio-sesion.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  public islogin :boolean;
+  public nomusuario: string;
+  public emailusuario: string;
+
+  constructor(public authser: InicioSesionService ) { }
+
+  logout(){
+    this.authser.logout();
+  }
 
   ngOnInit() {
+    this.authser.getAuth().subscribe (auth =>{
+      if (auth) {
+        this.islogin=true;
+        this.nomusuario = auth.displayName;
+        this.emailusuario = auth.email;
+      } else {
+        this.islogin = false;
+      }
+    })
   }
 
 }
