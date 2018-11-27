@@ -2,12 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import 'rxjs/add/operator/map';
-import { of } from 'rxjs/observable/of';
-import { auth } from 'firebase/app';
-import { promise } from '../../../node_modules/protractor';
-import { resolve } from 'path';
-import { reject } from '../../../node_modules/@types/q';
-import { EmailValidator } from '../../../node_modules/@angular/forms';
 
 
 @Injectable({
@@ -16,6 +10,7 @@ import { EmailValidator } from '../../../node_modules/@angular/forms';
 export class InicioSesionService {
 
   items: AngularFireList<any[]>;
+  otro:string;
 
   constructor(public afAuth: AngularFireAuth,private af: AngularFireDatabase) { }
 
@@ -26,6 +21,12 @@ export class InicioSesionService {
   getAuth(){
     return this.afAuth.authState.map ( auth => auth);
   }
+
+  itemactual (vervalor){
+      console.log(vervalor);
+      this.otro = vervalor;
+  
+    }
 
   logout(){
     return this.afAuth.auth.signOut();

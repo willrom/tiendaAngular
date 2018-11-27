@@ -14,10 +14,6 @@ export class InicioSesionComponent implements OnInit {
   public password: string;
   mostrar=false;
 
-  prueba(){
-    console.log(this.email)
-    console.log("hola")
-  }
 
   constructor(public outService:  InicioSesionService, public router: Router ) { 
     
@@ -40,5 +36,4 @@ export class InicioSesionComponent implements OnInit {
       this.mostrar=true;
     })
   }
-
 }

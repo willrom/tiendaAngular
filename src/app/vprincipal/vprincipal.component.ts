@@ -10,8 +10,10 @@ import { InicioSesionService } from '../servicios/inicio-sesion.service'
 export class VprincipalComponent implements OnInit {
 
   public catalogo: any[];
-
-
+  public orden: string = 'nombre';
+  public foto: string;
+  vervalor:string;
+  
   constructor(private liscatalogo:InicioSesionService) {}
 
   ngOnInit() {
@@ -22,9 +24,11 @@ export class VprincipalComponent implements OnInit {
       item.forEach(element => {
         let x = element.payload.toJSON();
         x["$key"]=element.key;
-        this.catalogo.push(x)
+        this.catalogo.push(x);
       })
     })
   }
-
+  ver(vervalor){
+    this.liscatalogo.itemactual(vervalor);
+  }
 }

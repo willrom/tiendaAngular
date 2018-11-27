@@ -19,6 +19,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { VprincipalComponent } from './vprincipal/vprincipal.component';
 import { VcomprasComponent } from './vcompras/vcompras.component';
 import { DatafilterPipe } from './pipes/data–filter.pipe'
+import { OrderModule } from 'ngx-order-pipe';
+import { VistadetalladaComponent } from './vistadetallada/vistadetallada.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { DatafilterPipe } from './pipes/data–filter.pipe'
     NavbarComponent,
     VprincipalComponent,
     VcomprasComponent,
-    DatafilterPipe
+    DatafilterPipe,
+    VistadetalladaComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import { DatafilterPipe } from './pipes/data–filter.pipe'
     RouterAppModule,
     AngularFireDatabaseModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OrderModule
   ],
   providers: [InicioSesionService, SeguridadGuard],
   bootstrap: [AppComponent]
