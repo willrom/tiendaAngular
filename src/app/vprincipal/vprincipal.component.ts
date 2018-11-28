@@ -12,7 +12,10 @@ export class VprincipalComponent implements OnInit {
   public catalogo: any[];
   public orden: string = 'nombre';
   public foto: string;
-  vervalor:string;
+  nomfruta:string;
+  dirfoto:string;
+  precio:number;
+  unidades:number;
   
   constructor(private liscatalogo:InicioSesionService) {}
 
@@ -28,7 +31,7 @@ export class VprincipalComponent implements OnInit {
       })
     })
   }
-  ver(vervalor){
-    this.liscatalogo.itemactual(vervalor);
+  ver(nomfruta,dirfoto,precio,unidades){
+    this.liscatalogo.itemactual(nomfruta,dirfoto,precio,unidades);
   }
 }

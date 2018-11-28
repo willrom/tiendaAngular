@@ -10,7 +10,10 @@ import 'rxjs/add/operator/map';
 export class InicioSesionService {
 
   items: AngularFireList<any[]>;
-  otro:string;
+  nomfruta:string;
+  dirfoto:string;
+  precio:number;
+  unidades:number;
 
   constructor(public afAuth: AngularFireAuth,private af: AngularFireDatabase) { }
 
@@ -21,11 +24,12 @@ export class InicioSesionService {
   getAuth(){
     return this.afAuth.authState.map ( auth => auth);
   }
-
-  itemactual (vervalor){
-      console.log(vervalor);
-      this.otro = vervalor;
   
+  itemactual (nomfruta,dirfoto,precio,unidades){
+      this.nomfruta = nomfruta;
+      this.dirfoto = dirfoto;
+      this.precio = precio;
+      this.unidades = unidades;
     }
 
   logout(){
