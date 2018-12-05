@@ -8,3 +8,12 @@
     height: 700px;
     overflow: scroll;
 }
+
+.card-action{
+    align-items: flex-end ;
+}
+
+.card-action button{
+    margin: 0.4px;
+    font-size: 10px;
+}

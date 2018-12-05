@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InicioSesionService } from '../servicios/inicio-sesion.service';
+import { Carrocompras } from '../objetos/carrocompras'
 
 @Component({
   selector: 'app-vcompras',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VcomprasComponent implements OnInit {
 
-  constructor() { }
+  carrito: Carrocompras[]=[];
+
+  constructor(private compra:InicioSesionService) {
+    this.carrito=compra.comprasdb
+   }
 
   ngOnInit() {
   }

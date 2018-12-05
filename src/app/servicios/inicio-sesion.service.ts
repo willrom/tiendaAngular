@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import 'rxjs/add/operator/map';
+import { Carrocompras } from '../objetos/carrocompras';
 
 
 @Injectable({
@@ -14,6 +15,8 @@ export class InicioSesionService {
   dirfoto:string;
   precio:number;
   unidades:number;
+  cantidad:number;
+  comprasdb : Carrocompras []=[];
 
   constructor(public afAuth: AngularFireAuth,private af: AngularFireDatabase) { }
 
@@ -34,6 +37,11 @@ export class InicioSesionService {
 
   logout(){
     return this.afAuth.auth.signOut();
+  }
+
+  anadirCompra(compra: Carrocompras) {
+    this.comprasdb.push(compra);
+    console.log(this.comprasdb)
   }
 
   login(email: string, password: string) {
