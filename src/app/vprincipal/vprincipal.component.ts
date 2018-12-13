@@ -4,6 +4,7 @@ import { Carrocompras } from '../objetos/carrocompras';
 
 
 
+
 @Component({
   selector: 'app-vprincipal',
   templateUrl: './vprincipal.component.html',
@@ -18,13 +19,23 @@ export class VprincipalComponent implements OnInit {
   dirfoto:string;
   precio:number;
   unidades:number;
-  cantidad:number; 
-  compra:Carrocompras;   
+  public cantidad:number;
+  public mostrar:boolean;
+  public cantidad2=0;
+  public total:number=0; 
+  compra : {
+    $key: string,
+    nombre: string,
+    foto: string,
+    precio: number,
+    unidades: number,
+    subtotal: number
+    };   
 
   
   
   constructor(private liscatalogo:InicioSesionService) {}
-  
+
   ngOnInit() {
     this.liscatalogo.getcatalogo()
     .snapshotChanges()
@@ -37,18 +48,24 @@ export class VprincipalComponent implements OnInit {
       })
     })
   }
+
   ver(nomfruta,dirfoto,precio,unidades){
     this.liscatalogo.itemactual(nomfruta,dirfoto,precio,unidades);
   }
 
-  addCompra(nomfruta,dirfoto,precio,cantidad){
+  addCompra(key,nomfruta,dirfoto,precio,unidadOrig,cantidad){
     this.compra = {
+      $key: key,
       nombre: nomfruta,
-      imagen: dirfoto,
-      cantidad: cantidad,
+      foto: dirfoto,
+      precio: cantidad,
+      unidades: unidadOrig,
       subtotal: precio
       };
-      this.liscatalogo.anadirCompra(this.compra)
+      this.total += precio;
+      this.liscatalogo.anadirCompra(this.compra,this.total)
+      this.cantidad2= this.cantidad2 + parseInt(cantidad);
+      this.mostrar=true;
     }
    
 }

@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import 'rxjs/add/operator/map';
 import { Carrocompras } from '../objetos/carrocompras';
+import { CarritoCompra } from '../objetos/carrito-compra'
+import { createRouterScroller } from '../../../node_modules/@angular/router/src/router_module';
 
 
 @Injectable({
@@ -16,12 +18,25 @@ export class InicioSesionService {
   precio:number;
   unidades:number;
   cantidad:number;
-  comprasdb : Carrocompras []=[];
+  total:number;
+  // compra : {
+  //   $key: string,
+  //   nombre: string,
+  //   foto: string,
+  //   precio: number,
+  //   unidades: number,
+  //   subtotal: number
+  // };
+  comprasdb : CarritoCompra []=[];
 
-  constructor(public afAuth: AngularFireAuth,private af: AngularFireDatabase) { }
+  constructor(public afAuth: AngularFireAuth,public af: AngularFireDatabase) {}
 
   getcatalogo(){
     return  this.items = this.af.list('/catalogo');
+  }
+
+  actualizar($key,compra) {
+    this.items.update($key,compra);
   }
 
   getAuth(){
@@ -33,15 +48,15 @@ export class InicioSesionService {
       this.dirfoto = dirfoto;
       this.precio = precio;
       this.unidades = unidades;
-    }
+  }
 
   logout(){
     return this.afAuth.auth.signOut();
   }
 
-  anadirCompra(compra: Carrocompras) {
+  anadirCompra(compra,total) {
     this.comprasdb.push(compra);
-    console.log(this.comprasdb)
+    this.total=total;
   }
 
   login(email: string, password: string) {

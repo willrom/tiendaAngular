@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { InicioSesionService } from '../servicios/inicio-sesion.service';
 import { Carrocompras } from '../objetos/carrocompras'
+import { CarritoCompra } from '../objetos/carrito-compra'
+
 
 @Component({
   selector: 'app-vcompras',
@@ -9,13 +11,25 @@ import { Carrocompras } from '../objetos/carrocompras'
 })
 export class VcomprasComponent implements OnInit {
 
-  carrito: Carrocompras[]=[];
+  carrito: CarritoCompra []=[];
+  item: Carrocompras;
+  total:number;
 
   constructor(private compra:InicioSesionService) {
-    this.carrito=compra.comprasdb
-   }
+    this.carrito = compra.comprasdb
+    this.total = compra.total 
+    }
+
+  actualizaritem(){
+    for (let index = 0; index < this.carrito.length ; index++) {
+      const element = this.carrito[index];
+      console.log(element)
+      this.compra.actualizar(element.$key, { 
+        unidades: element.unidades-element.precio, 
+      });
+    } 
+  }
 
   ngOnInit() {
   }
-
 }

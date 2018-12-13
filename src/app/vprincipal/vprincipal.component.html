@@ -1,5 +1,5 @@
 <div class="fondoprincipal">
-    <app-navbar></app-navbar>
+    <app-navbar [cantidad2]="cantidad2" [mostrar]="mostrar" ></app-navbar>
     <div class="container white">
        <div class="alto"> 
         <div class="row">
@@ -34,7 +34,7 @@
                             <div class="row">
                             <div class="card-action">
                                 <div class="col s4"><button class="btn-small" routerLink="/vistadetallada" (click)="ver(item.nombre,item.foto,item.precio,item.unidades)">Ver Mas</button></div>
-                                <div class="col s4"><button class="btn-small" (click)="addCompra(item.nombre,item.foto,item.precio*cantidad.value,cantidad.value)">Añadir</button></div>
+                                <div class="col s4"><button class="btn-small" (click)="addCompra(item.$key,item.nombre,item.foto,item.precio*cantidad.value,item.unidades,cantidad.value)">Añadir</button></div>
                                 <div class="col s4"><input type="number" class="container" min="1" value="1" #cantidad ></div>
                             </div>
                             </div>
