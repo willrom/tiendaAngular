@@ -23,11 +23,19 @@ export class VcomprasComponent implements OnInit {
   actualizaritem(){
     for (let index = 0; index < this.carrito.length ; index++) {
       const element = this.carrito[index];
-      console.log(element)
       this.compra.actualizar(element.$key, { 
         unidades: element.unidades-element.precio, 
       });
-    } 
+    }
+    this.carrito=[];
+    this.compra.comprasdb=[];
+    this.total=0; 
+  }
+
+  cancelar(){
+    this.carrito=[];
+    this.compra.comprasdb=[];
+    this.total=0;
   }
 
   ngOnInit() {
